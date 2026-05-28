@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family:Arial; font-size:30px;">
+
+<div id="resultado">Cargando...</div>
+
+<script>
+
+fetch("https://api.inaturalist.org/v1/observations/species_counts?created_d1=2026-01-18&place_id=218604&project_id=cuenca-estero-penco-plantas")
+
+.then(r => r.json())
+
+.then(data => {
+
+  const total = data.results.length;
+
+  document.getElementById("resultado").innerText =
+    total + " especies";
+
+});
+
+</script>
+
+</body>
+</html>
