@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
-<body style="font-family:Arial; font-size:15px;">
 
-<div id="resultado">Cargando...</div>
+<body style="margin:0;">
+
+<img id="img">
 
 <script>
 
@@ -14,8 +15,21 @@ fetch("https://api.inaturalist.org/v1/observations/species_counts?created_d1=202
 
   const total = data.results.length;
 
-  document.getElementById("resultado").innerText =
-    total + " especies";
+  const svg = `
+  <svg xmlns="http://www.w3.org/2000/svg" width="140" height="30">
+    <text x="0" y="22"
+      font-size="20"
+      font-family="Arial"
+      fill="black">
+      ${total} especies
+    </text>
+  </svg>`;
+
+  const url =
+    "data:image/svg+xml;charset=utf-8," +
+    encodeURIComponent(svg);
+
+  document.getElementById("img").src = url;
 
 });
 
